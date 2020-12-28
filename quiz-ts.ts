@@ -2,11 +2,20 @@
 // * 给下这段的代码加上 TypeScript 类型声明，以便更好地使用数据。
 
 // * ---------------- 请补充……
-
+type Todo = {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+};
 const getData = async () =>
   await fetch('https://jsonplaceholder.typicode.com/todos/').then((response) => response.json());
 
 getData().then((e) => console.log(e));
+
+let data: any = getData();
+let newData = <Array<Todo>> data;
+
 
 // * ---------------- TS 的示例
 
@@ -22,6 +31,6 @@ getData().then((e) => console.log(e));
   // * 最基本的 TS == JS 加上 类型
   const getId = (obj: MyObj): string => obj.id;
 
-  const id = getId({ id: 'user02', name: 'LC' });
+  const id = getId({id: 'user02', name: 'LC'});
   console.log(id.startsWith('user'));
 }

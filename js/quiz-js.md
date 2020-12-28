@@ -19,6 +19,9 @@
 > 禁止使用 var，不可变数据用 const 声明，可变数据用 let 声明。
 
 答：
+1. 学会用console.log调试大法
+2. 先构思再编码
+3. 遇到不会的，学会运用CRM，先copy，再run，再modify
 
 ## 请问以下代码做了什么事情
 
@@ -28,4 +31,4 @@ const getLoglevel = () => {
 };
 ```
 
-答：
+答：返回localStorage的loglevel属性，如果该属性不存在则返回INFO

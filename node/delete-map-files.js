@@ -4,7 +4,29 @@
  * @return {void}
  */
 const deleteMapFiles = (p) => {
-  // 请实现……
+    // 请实现……
+    let fs = require("fs");
+    let path = require("path");
+    if (fs.existsSync(p)) {
+
+        files = fs.readdirSync(p);
+
+        files.forEach(function (file, index) {
+
+            var curPath = path.join(p, file);
+
+            if (fs.statSync(curPath).isDirectory()) {
+                deleteMapFiles(curPath)
+            } else {
+                if (file.endsWith(".map")) {
+                    fs.unlinkSync(curPath);
+                    console.log("删除文件：" + curPath);
+                }
+            }
+        });
+    } else {
+        console.log("给定的路径不存在！");
+    }
 };
 
 // * ------------------------------------------------

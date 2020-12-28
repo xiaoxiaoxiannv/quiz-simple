@@ -4,10 +4,13 @@
  * @returns {string} 返回 url 中的 host
  */
 const getHostName = (url) => {
-  // 请实现……
+    const reg = /^http(s)?:\/\/(.*?)\//
+    const ToReplace = 'Host/'
+    url.replace(reg, ToReplace)
+    return reg.exec(url)[2]
 };
 
 // * ---------------- 实现的效果：
 {
-  console.log(getHostName(`https://help.github.com/cn/github`)); // => `help.github.com`
+    console.log(getHostName(`https://help.github.com/cn/github`)); // => `help.github.com`
 }

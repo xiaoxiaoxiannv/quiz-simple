@@ -2,25 +2,36 @@
 // * 那么你实际是怎么做的？
 
 // * ---------------- 解决下文中缺少 clone 函数的问题……
-// 在这里写代码……
+let clone = (obj) => {
+    let result = Array.isArray(obj) ? [] : {}
+    for (let key in obj) {
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            result[key] = clone(obj[key])
+        } else {
+            result[key] = obj[key]
+        }
+    }
+    return result
+}
+
 
 // * ---------------- 实现的效果：
 
 {
-  const data = {
-    person: [
-      {
-        id: 114514,
-        age: 24,
-        type: 'student',
-      },
-    ],
-  };
+    const data = {
+        person: [
+            {
+                id: 114514,
+                age: 24,
+                type: 'student',
+            },
+        ],
+    };
 
-  const mirrorData = clone(data);
+    const mirrorData = clone(data);
 
-  mirrorData.person[0].age = 19;
+    mirrorData.person[0].age = 19;
 
-  console.log(mirrorData.person[0].age === 19);
-  console.log(data.person[0].age === 24);
+    console.log(mirrorData.person[0].age === 19);
+    console.log(data.person[0].age === 24);
 }
